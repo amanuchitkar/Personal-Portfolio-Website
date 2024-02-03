@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignIn&SignUp</title>
+
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/64d58efce2.js"></script>
+    <link rel="stylesheet" href="../static/css/login.css" />
+    <!-- <link rel="stylesheet" href="./static\css\style.css"> -->
+
+</head>
+<header>
+    <a href="/" class="logo">
+        <i class="fab fa-node-js"></i>
+        aman</a>
+
+    <div id="menu" class="fas fa-bars"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#skills">Skills</a></li>
+            <li><a href="/#education">Education</a></li>
+            <li><a href="/#work">Work</a></li>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="/login" class="signin">SignIn/SignUp</a></li>
+        </ul>
+    </nav>
+
+    </div>
+</header>
+
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+
+                <form action="/signin" class="sign-in-form" method="post">
+                    {% csrf_token %}
+                    <h2 class="title">Sign In</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" name="username" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password" />
+                    </div>
+                    <input type="submit" value="Login" class="btn solid" />
+
+                    <p class="social-text">Or Sign in with social platforms</p>
+
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+
+
+                <form action="/signup" class="sign-up-form" method="post">
+                    {% csrf_token %}
+                    <h2 class="title">Sign Up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username" name="username" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" name="email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" name="password" />
+                    </div>
+                    <input type="submit" value="Sign Up" class="btn solid" />
+
+                    <p class="social-text">Or Sign up with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panels-container">
+
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>New here?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
+                    <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+                </div>
+                <img src="../static/images/log.svg" class="image" alt="">
+            </div>
+
+            <div class="panel right-panel">
+                <div class="content">
+                    <h3>One of us?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
+                    <button class="btn transparent" id="sign-in-btn">Sign In</button>
+                </div>
+                <img src="../static/images/register.svg" class="image" alt="">
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // $(document).ready(function () {
+
+        //     $('#menu').click(function () {
+        //         $(this).toggleClass('fa-times');
+        //         $('.navbar').toggleClass('nav-toggle');
+        //     });
+
+        //     $(window).on('scroll load', function () {
+        //         $('#menu').removeClass('fa-times');
+        //         $('.navbar').removeClass('nav-toggle');
+
+        //         if (window.scrollY > 60) {
+        //             document.querySelector('#scroll-top').classList.add('active');
+        //         } else {
+        //             document.querySelector('#scroll-top').classList.remove('active');
+        //         }
+
+        //         // scroll spy
+        //         $('section').each(function () {
+        //             let height = $(this).height();
+        //             let offset = $(this).offset().top - 200;
+        //             let top = $(window).scrollTop();
+        //             let id = $(this).attr('id');
+
+        //             if (top > offset && top < offset + height) {
+        //                 $('.navbar ul li a').removeClass('active');
+        //                 $('.navbar').find(`[href="#${id}"]`).addClass('active');
+        //             }
+        //         });
+        //     });
+
+            // smooth scrolling
+        //     $('a[href*="#"]').on('click', function (e) {
+        //         e.preventDefault();
+        //         $('html, body').animate({
+        //             scrollTop: $($(this).attr('href')).offset().top,
+        //         }, 500, 'linear')
+        //     });
+        // });
+        const sign_in_btn = document.querySelector("#sign-in-btn");
+        const sign_up_btn = document.querySelector("#sign-up-btn");
+        const container = document.querySelector(".container");
+
+        sign_up_btn.addEventListener('click', () => {
+            container.classList.add("sign-up-mode");
+        });
+
+        sign_in_btn.addEventListener('click', () => {
+            container.classList.remove("sign-up-mode");
+        });
+    </script>
+</body>
+
+</html>
