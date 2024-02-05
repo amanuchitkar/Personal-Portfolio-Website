@@ -43,7 +43,7 @@ html::-webkit-scrollbar-thumb {
 /* pre loader start */
 .loader-container {
   position: fixed;
-  top: 0;
+  top: 13px;
   left: 0;
   z-index: 10000;
   background: #e6eff1;
@@ -84,6 +84,7 @@ section {
   color: rgb(32, 32, 32);
   font-weight: 800;
   text-align: center;
+  margin-top: 7rem 
 }
 .heading span {
   color: rgb(115, 3, 167);
@@ -179,6 +180,7 @@ header .navbar ul li a:hover {
   }
 }
 /* hamburger icon ends */
+
 
 /* hero section starts*/
 .home {
@@ -935,7 +937,12 @@ header .navbar ul li a:hover {
 /* contact section starts */
 .contact {
   background: #e5ecfb;
-  min-height: 60vh;
+    min-height: 101vh;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 .contact .container {
   max-width: 1050px;

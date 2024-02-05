@@ -4,17 +4,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link id='favicon' rel="shortcut icon" href="./static/images/hero1.jpeg" type="image/x-png">
     <title>SignIn&SignUp</title>
 
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/64d58efce2.js"></script>
-    <link rel="stylesheet" href="../static/css/login.css" />
+    {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> {% endcomment %}
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <!-- <link rel="stylesheet" href="./static\css\style.css"> -->
+    <link rel="stylesheet" href="../static/css/login.css" />
 
 </head>
+<style></style>
 <header>
     <a href="/" class="logo">
         <i class="fab fa-node-js"></i>
-        aman</a>
+        Aman</a>
 
     <div id="menu" class="fas fa-bars"></div>
     <nav class="navbar">
@@ -26,14 +34,24 @@
             <li><a href="/#work">Work</a></li>
             <li><a href="/#experience">Experience</a></li>
             <li><a href="/#contact">Contact</a></li>
-            <li><a href="/login" class="signin">SignIn/SignUp</a></li>
+            <li><a href="/signin" class="signin" style="color: #011aff;">SignIn/SignUp</a></li>
         </ul>
     </nav>
 
     </div>
 </header>
+<div class="center1">
 
-<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" style="height: 4rem; top:3.5rem;" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <body>
+</div>
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
@@ -43,11 +61,11 @@
                     <h2 class="title">Sign In</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" name="username" />
+                        <input type="text" placeholder="Username" name="username" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" />
+                        <input type="password" placeholder="Password" name="password" required />
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
 
@@ -75,15 +93,23 @@
                     <h2 class="title">Sign Up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" name="username" />
+                        <input type="text" placeholder="Username" name="username" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="First Name" name="firstName" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Last Name" name="lastName" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" name="email" />
+                        <input type="email" placeholder="Email" name="email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" />
+                        <input type="password" placeholder="Password" name="password" required />
                     </div>
                     <input type="submit" value="Sign Up" class="btn solid" />
 
@@ -98,7 +124,7 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-google"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="https://www.linkedin.com/in/aman-uchitkar-44757020a/" class="social-icon">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
@@ -126,48 +152,25 @@
             </div>
         </div>
     </div>
-
+    <!-- <script src="../static/js/script.js"></script> -->
     <script>
-
-        // $(document).ready(function () {
-
-        //     $('#menu').click(function () {
-        //         $(this).toggleClass('fa-times');
-        //         $('.navbar').toggleClass('nav-toggle');
-        //     });
-
-        //     $(window).on('scroll load', function () {
-        //         $('#menu').removeClass('fa-times');
-        //         $('.navbar').removeClass('nav-toggle');
-
-        //         if (window.scrollY > 60) {
-        //             document.querySelector('#scroll-top').classList.add('active');
-        //         } else {
-        //             document.querySelector('#scroll-top').classList.remove('active');
-        //         }
-
-        //         // scroll spy
-        //         $('section').each(function () {
-        //             let height = $(this).height();
-        //             let offset = $(this).offset().top - 200;
-        //             let top = $(window).scrollTop();
-        //             let id = $(this).attr('id');
-
-        //             if (top > offset && top < offset + height) {
-        //                 $('.navbar ul li a').removeClass('active');
-        //                 $('.navbar').find(`[href="#${id}"]`).addClass('active');
-        //             }
-        //         });
-        //     });
-
-            // smooth scrolling
-        //     $('a[href*="#"]').on('click', function (e) {
-        //         e.preventDefault();
-        //         $('html, body').animate({
-        //             scrollTop: $($(this).attr('href')).offset().top,
-        //         }, 500, 'linear')
-        //     });
+        //         ocument.addEventListener('click', function(event) {
+        //     if (event.target !== dropdown && !dropdown.contains(event.target)) {
+        //         // hide the menu
+        //       classie.removeClass(menu, "menu-active");
+        //     }
         // });
+
+        //         $(menu).click(function () {
+        //             $(this).toggleClass('fa-times');
+        //             $('.navbar').toggleClass('nav-toggle');
+        //         });
+
+        //         $(window).on('scroll load', function () {
+        //             $('#menu').removeClass('fa-times');
+        //             $('.navbar').removeClass('nav-toggle');
+        //         });
+        var menu = document.querySelector('#menu')
         const sign_in_btn = document.querySelector("#sign-in-btn");
         const sign_up_btn = document.querySelector("#sign-up-btn");
         const container = document.querySelector(".container");
@@ -180,6 +183,8 @@
             container.classList.remove("sign-up-mode");
         });
     </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
