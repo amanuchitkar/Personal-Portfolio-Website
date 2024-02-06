@@ -59,12 +59,12 @@ $(document).ready(function () {
 document.addEventListener('visibilitychange',
     function () {
         if (document.visibilityState === "visible") {
-            document.title = "Portfolio | Aman";
-            $("#favicon").attr("href", "/images/favicon.png");
+            document.title = "Portfolio | 𝕬𝖒𝖆𝖓";
+            $("#favicon").attr("href", "./static/images/hero.jpeg");
         }
         else {
             document.title = "Come Back To Portfolio";
-            $("#favicon").attr("href", "static/images/favhand.png");
+            $("#favicon").attr("href", "./static/images/favhand.png");
         }
     });
 
