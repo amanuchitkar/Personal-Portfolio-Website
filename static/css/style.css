@@ -329,6 +329,10 @@ header .navbar ul li a:hover {
 
 /* hero media queries starts*/
 @media (max-width: 450px) {
+  .home{
+    flex-direction: column-reverse;
+
+  }
   .home .btn {
     margin: 4rem 0;
   }
@@ -336,7 +340,7 @@ header .navbar ul li a:hover {
     margin-top: 12rem;
   }
   .home .image img {
-    margin-top: -12rem;
+    margin-top: 12rem;
   }
   .home .content p {
     font-size: 2.2rem;
@@ -707,7 +711,7 @@ header .navbar ul li a:hover {
   justify-content: center;
 }
 .work .desc p {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .work .desc .btns {
   display: flex;

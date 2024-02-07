@@ -10,4 +10,5 @@ urlpatterns = [
     path('experience', views.experience,name="experience"),
     path('error', views.error,name="error"),
     path('contact', views.contact,name="contact"),
+    path('project', views.project,name="project"),
 ]

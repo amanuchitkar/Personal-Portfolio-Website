@@ -76,7 +76,7 @@
 }
 
 .alert-dismissible {
-    padding-right: 3rem;
+    padding: 3rem;
 }
 
 .btn-close {
@@ -105,7 +105,7 @@
 .btn-close:hover {
     opacity: 1;
     border: 1px solid #00000087;
-    box-shadow: 2px gray;
+    box-shadow: 2px rgb(99, 99, 99);
     /* color: aliceblue; */
 
 }

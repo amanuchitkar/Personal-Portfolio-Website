@@ -225,8 +225,8 @@ form.sign-in-form {
   max-width: 380px;
   width: 100%;
   background-color: #f0f0f0;
-  margin: 10px 0;
-  height: 55px;
+  margin: 1rem 0;
+  height: 4rem;
   border-radius: 55px;
   display: grid;
   grid-template-columns: 15% 85%;
@@ -236,20 +236,21 @@ form.sign-in-form {
 
 .input-field i {
   text-align: center;
-  line-height: 55px;
+  line-height: 4rem;
   color: #acacac;
   transition: 0.5s;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .input-field input {
   background: none;
   outline: none;
   border: none;
-  line-height: 1;
+  line-height: 1rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #333;
+  border-radius: 55px;
 }
 
 .input-field input::placeholder {
@@ -328,11 +329,12 @@ form.sign-in-form {
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
+  /* opacity: 0.9; */
 }
 
 .image {
   width: 40rem;
-  height: 30rem;
+  height: 24rem;
   width: 100%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
@@ -367,24 +369,34 @@ form.sign-in-form {
   font-weight: 600;
   line-height: 1;
   font-size: 1.5rem;
+  color: #474157;
 }
 
 .panel p {
   font-size: 0.95rem;
   padding: 0.7rem 0;
+  color: #3c4461;
+  text-align: justify;
 }
 
 .btn.transparent {
   margin: 0;
   background: none;
-  color: white;
-  border: 2px solid #fff;
+  color: #474157;
+  border: 2px solid #5f5d7e8c;
   width: 130px;
   height: 41px;
   font-weight: 600;
   font-size: 0.8rem;
 }
+.btn:hover{
+  border: 2px solid #474157d0;
+color: #5f5d7e;
+}
+.btn:active{
+  color: #474157;
 
+}
 .right-panel .image,
 .right-panel .content {
   transform: translateX(800px);
@@ -409,6 +421,7 @@ form.sign-in-form {
 .container.sign-up-mode form.sign-up-form {
   opacity: 1;
   z-index: 2;
+  margin-top: 2rem;
 }
 
 .container.sign-up-mode form.sign-in-form {
@@ -456,16 +469,20 @@ form.sign-in-form {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 2.5rem 8%;
+    /* padding: 2.5rem 8%; */
     grid-column: 1 / 2;
   }
 
   .right-panel {
     grid-row: 3 / 4;
+    padding: 2.5rem 8%;
+
   }
 
   .left-panel {
     grid-row: 1 / 2;
+    padding: 9.5rem 8%;
+
   }
 
   .image {
@@ -485,7 +502,7 @@ form.sign-in-form {
   }
 
   .panel p {
-    font-size: 0.7rem;
+    font-size: 1rem;
     padding: 0.5rem 0;
   }
 
@@ -551,12 +568,12 @@ form.sign-in-form {
   }
 
   .container:before {
-    bottom: 72%;
+    bottom: 60%;
     left: 50%;
   }
 
   .container.sign-up-mode:before {
-    bottom: 28%;
+    bottom: 35vh;
     left: 50%;
   }
 }

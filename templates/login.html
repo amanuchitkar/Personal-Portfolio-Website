@@ -8,12 +8,14 @@
     <title>SignIn&SignUp</title>
 
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/64d58efce2.js"></script>
-    {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> {% endcomment %}
+    
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">  -->
     <link rel="stylesheet" href="../static/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- <link rel="stylesheet" href="./static\css\style.css"> -->
     <link rel="stylesheet" href="../static/css/login.css" />
 
@@ -45,146 +47,160 @@
 
     {% if messages %}
     {% for message in messages %}
-    <div class="alert alert-{{message.tags}} alert-dismissible fade show" style="height: 4rem; top:3.5rem;" role="alert">
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" style="height: 4rem; top:3.5rem;"
+        role="alert">
         {{ message }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     {% endfor %}
     {% endif %}
+
     <body>
 </div>
-    <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
+<div class="container">
+    <div class="forms-container">
+        <div class="signin-signup">
 
-                <form action="/signin" class="sign-in-form" method="post">
-                    {% csrf_token %}
-                    <h2 class="title">Sign In</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" name="username" required />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" required />
-                    </div>
-                    <input type="submit" value="Login" class="btn solid" />
-
-                    <p class="social-text">Or Sign in with social platforms</p>
-
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </form>
-
-
-                <form action="/signup" class="sign-up-form" method="post">
-                    {% csrf_token %}
-                    <h2 class="title">Sign Up</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Username" name="username" required />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="First Name" name="firstName" required />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Last Name" name="lastName" required />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" placeholder="Email" name="email" required />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" required />
-                    </div>
-                    <input type="submit" value="Sign Up" class="btn solid" />
-
-                    <p class="social-text">Or Sign up with social platforms</p>
-                    <div class="social-media">
-                        <a href="https://github.com/amanuchitkar" class="social-icon">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://twitter.com/aman_uchitkar" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://www.cloudskillsboost.google/public_profiles/7308881d-94e0-4843-ae8a-40753fe95f60" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/aman-uchitkar-44757020a/" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="panels-container">
-
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>New here?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
-                    <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+            <form action="/signin" class="sign-in-form" method="post">
+                {% csrf_token %}
+                <h2 class="title">Sign In</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" name="username" required />
                 </div>
-                <img src="../static/images/log.svg" class="image" alt="">
-            </div>
-
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>One of us?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
-                    <button class="btn transparent" id="sign-in-btn">Sign In</button>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" name="password" required />
                 </div>
-                <img src="../static/images/register.svg" class="image" alt="">
-            </div>
+                <input type="submit" value="Login" class="btn solid" />
+
+                <p class="social-text">Or Sign in with social platforms</p>
+
+                <div class="social-media">
+                    <a href="https://github.com/amanuchitkar" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com/aman_uchitkar" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.cloudskillsboost.google/public_profiles/7308881d-94e0-4843-ae8a-40753fe95f60" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aman-uchitkar-44757020a/" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </form>
+
+
+            <form action="/signup" class="sign-up-form" method="post">
+                {% csrf_token %}
+                <h2 class="title">Sign Up</h2>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" name="username" required />
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="First Name" name="firstName" required />
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Last Name" name="lastName" required />
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email" name="email" required />
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" name="password" required />
+                </div>
+                <input type="submit" value="Create Account" class="btn solid" />
+
+                <p class="social-text">Or Sign up with social platforms</p>
+                <div class="social-media">
+                    <a href="https://github.com/amanuchitkar" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com/aman_uchitkar" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.cloudskillsboost.google/public_profiles/7308881d-94e0-4843-ae8a-40753fe95f60"
+                        class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/aman-uchitkar-44757020a/" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
-    <!-- <script src="../static/js/script.js"></script> -->
-    <script>
-        //         ocument.addEventListener('click', function(event) {
-        //     if (event.target !== dropdown && !dropdown.contains(event.target)) {
-        //         // hide the menu
-        //       classie.removeClass(menu, "menu-active");
-        //     }
-        // });
+    <div class="panels-container">
 
-        //         $(menu).click(function () {
-        //             $(this).toggleClass('fa-times');
-        //             $('.navbar').toggleClass('nav-toggle');
-        //         });
+        <div class="panel left-panel">
+            <div class="content">
+                <h3>Welcome there</h3>
+                <p>Welcome to Aman Uchitkar's Portfolio! We're thrilled to have you explore our platform and engage with
+                    the content. If you're new here and haven't created an account yet, now is the perfect time to do
+                    so.</p>
+                <button class="btn transparent" id="sign-up-btn">Sign Up</button>
+            </div>
+            <img src="../static/images/log.svg" class="image" alt="">
+        </div>
 
-        //         $(window).on('scroll load', function () {
-        //             $('#menu').removeClass('fa-times');
-        //             $('.navbar').removeClass('nav-toggle');
-        //         });
-        var menu = document.querySelector('#menu')
-        const sign_in_btn = document.querySelector("#sign-in-btn");
-        const sign_up_btn = document.querySelector("#sign-up-btn");
-        const container = document.querySelector(".container");
+        <div class="panel right-panel">
+            <div class="content">
+                <h3>How to Sign Up:</h3>
+                <p class=" text-align: justify;">1. Click on the Sign Up link located here or find it in the top navigation menu.
+                 <br>
+                 2. Fill in your basic information, including your name, email address, and a secure password.   
+                 <br>
+                 3. Click the "Create Account" button.
+                 <br>
+                 If you've already created an account, simply sign in to resume your journey on Aman Uchitkar's Portfolio.
+                </p>
+                <button class="btn transparent" id="sign-in-btn">Sign In</button>
+            </div>
+            <img src="../static/images/register.svg" class="image" alt="">
+        </div>
+    </div>
+</div>
+<!-- <script src="../static/js/script.js"></script> -->
+<script>
+    //         ocument.addEventListener('click', function(event) {
+    //     if (event.target !== dropdown && !dropdown.contains(event.target)) {
+    //         // hide the menu
+    //       classie.removeClass(menu, "menu-active");
+    //     }
+    // });
 
-        sign_up_btn.addEventListener('click', () => {
-            container.classList.add("sign-up-mode");
-        });
+    //         $(menu).click(function () {
+    //             $(this).toggleClass('fa-times');
+    //             $('.navbar').toggleClass('nav-toggle');
+    //         });
 
-        sign_in_btn.addEventListener('click', () => {
-            container.classList.remove("sign-up-mode");
-        });
-    </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    //         $(window).on('scroll load', function () {
+    //             $('#menu').removeClass('fa-times');
+    //             $('.navbar').removeClass('nav-toggle');
+    //         });
+    var menu = document.querySelector('#menu')
+    const sign_in_btn = document.querySelector("#sign-in-btn");
+    const sign_up_btn = document.querySelector("#sign-up-btn");
+    const container = document.querySelector(".container");
+
+    sign_up_btn.addEventListener('click', () => {
+        container.classList.add("sign-up-mode");
+    });
+
+    sign_in_btn.addEventListener('click', () => {
+        container.classList.remove("sign-up-mode");
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
 </body>
 

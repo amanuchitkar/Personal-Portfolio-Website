@@ -79,3 +79,5 @@ def contact(request):
         return redirect("/#contact")
     else:
         return redirect("/error")
+def project(request):
+    return render(request,'project.html')
