@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Temperature Converter",
+    "desc": "Designed and implemented a sleek Temperature Converter using HTML, CSS, and JavaScript. Seamlessly switch between Celsius and Fahrenheit with an intuitive and responsive interface, showcasing my front-end development skills.",
+    "image": "tepconvert",
+    "category": "mern",
+    "links": {
+      "view": "https://github.com/amanuchitkar/OIBSIP/tree/main/Level%201/Task%203",
+      "code": "https://github.com/amanuchitkar/OIBSIP/tree/main/Level%201/Task%203"
+    }
+  },
+  {
+    "name": "Calculator on Python",
+    "desc": "Developed a functional calculator in Python, showcasing my programming skills. This project features a clean and user-friendly interface for basic arithmetic operations. The calculator demonstrates my proficiency in algorithmic logic and user interface design, providing a simple and efficient tool for mathematical calculations.",
+    "image": "calculator",
+    "category": "lamp",
+    "links": {
+      "view": "https://github.com/amanuchitkar/CodeClauseInternship/tree/main/CodeClauseInternship_Calculator%20in%20Python",
+      "code": "https://github.com/amanuchitkar/CodeClauseInternship/tree/main/CodeClauseInternship_Calculator%20in%20Python"
+    }
+  },
+  {
+    "name": "Tic-Tac-Toe Game",
+    "desc": "Crafted a classic Tic Tac Toe game using HTML, CSS, and JavaScript. Experience seamless gameplay and responsive design, showcasing my skills in front-end development.",
+    "image": "tictactoe",
+    "category": "mern",
+    "links": {
+      "view": "https://github.com/amanuchitkar/tic-tag",
+      "code": "https://github.com/amanuchitkar/tic-tag"
+    }
+  },
+  {
+    "name": "AI ResumeGen",
+    "desc": "ReactJS Basic Resume Generator which will generate customized resume in few minutes on your requirements.",
+    "image": "resumegen",
+    "category": "android",
+    "links": {
+      "view": "#",
+      "code": "#"
+    }
+  },
+  {
+    "name": "Responsive Landing Page",
+    "desc": "Designed a responsive landing page using HTML, CSS, and JavaScript, demonstrating proficiency in creating visually appealing and adaptable interfaces for diverse screen sizes.",
+    "image": "landingpage",
+    "category": "basicweb",
+    "links": {
+      "view": "https://github.com/amanuchitkar/OIBSIP/tree/main/Level%201/Task%201",
+      "code": "https://github.com/amanuchitkar/OIBSIP/tree/main/Level%201/Task%201"
+    }
+  },
+  {
+    "name": "Library Managment System on Python",
+    "desc": "Built a user-friendly Library Management System using Python and Tkinter, seamlessly managing and cataloging resources with SQLite integration. Demonstrates proficiency in software development, UI design, and database management.",
+    "image": "liblary",
+    "category": "lamp",
+    "links": {
+      "view": "https://github.com/amanuchitkar/CodeClauseInternship/tree/main/CodeClauseInternship_Library%20Management%20System",
+      "code": "https://github.com/amanuchitkar/CodeClauseInternship/tree/main/CodeClauseInternship_Library%20Management%20System"
+    }
+  },
+  {
+    "name": "Spotify UI Clone",
+    "desc": "Recreated the sleek Spotify user interface with HTML, CSS, and JavaScript. This project demonstrates my attention to detail in replicating complex designs, showcasing proficiency in front-end development and UI/UX design.",
+    "image": "spotify",
+    "category": "mern",
+    "links": {
+      "view": "https://github.com/amanuchitkar/spotify-clone",
+      "code": "https://github.com/amanuchitkar/spotify-clone"
+    }
+  },
+  {
+    "name": "Note Pad",
+    "desc": "Created a simple yet powerful NotePad application using Python. This project showcases my skills in GUI development, providing users with an intuitive platform for creating, saving, and organizing notes efficiently. The minimalist design ensures a distraction-free writing experience, demonstrating my commitment to user-centric applications.",
+    "image": "notepad",
+    "category": "lamp",
+    "links": {
+      "view": "https://github.com/amanuchitkar/PythonGUI/blob/main/Exrecice/Notepad.py",
+      "code": "https://github.com/amanuchitkar/PythonGUI/blob/main/Exrecice/Notepad.py"
+    }
+  }
+]
