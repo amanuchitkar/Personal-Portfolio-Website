@@ -7,9 +7,9 @@ from datetime import datetime
 
 # Create your views here.
 def index(request):
-    if request.user.is_anonymous:
-        return redirect('/signin')
-    else:
+    # if request.user.is_anonymous:
+    #     return redirect('/signin')
+    # else:
         return render(request,'index.html')
     # return render(request,"index.html")
 def usersignin(request):
