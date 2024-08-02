@@ -1,5 +1,15 @@
 [
   {
+    "name": "Leaderboard Website",
+    "desc": "The Leaderboard Website is a responsive application that transforms CSV data into an interactive, real-time leaderboard. Ideal for gaming and educational contexts, it features a modern design, custom scrollbars, and ensures a seamless experience across devices. Built with HTML5, CSS3, and JavaScript, it offers an efficient and engaging way to display rankings.",
+    "image": "lead",
+    "category": "mern",
+    "links": {
+      "view": "https://amanuchitkar.github.io/Leaderboard-Website/",
+      "code": "https://github.com/amanuchitkar/Leaderboard-Website"
+    }
+  },
+  {
     "name": "Temperature Converter",
     "desc": "Designed and implemented a sleek Temperature Converter using HTML, CSS, and JavaScript. Seamlessly switch between Celsius and Fahrenheit with an intuitive and responsive interface, showcasing my front-end development skills.",
     "image": "tepconvert",
@@ -50,7 +60,7 @@
     }
   },
   {
-    "name": "Library Managment System on Python",
+    "name": "Library Managment System",
     "desc": "Built a user-friendly Library Management System using Python and Tkinter, seamlessly managing and cataloging resources with SQLite integration. Demonstrates proficiency in software development, UI design, and database management.",
     "image": "liblary",
     "category": "lamp",
