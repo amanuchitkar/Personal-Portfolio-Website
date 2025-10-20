@@ -41,81 +41,102 @@ function getProjects() {
 
 
 function showProjects(projects) {
-    let projectsContainer = document.querySelector("#work .box-container");
-    let projectsHTML = "";
-    projects.forEach(project => {
-        projectsHTML += `
-        <div class="grid-item ${project.category}">
-        <div class="box tilt" style="width: 380px; margin: 1rem">
-      <img draggable="false" src="./static/images/projects/${project.image}.png" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>`
-    });
-    projectsContainer.innerHTML = projectsHTML;
+        let projectsContainer = document.querySelector("#work .box-container");
+        let projectsHTML = "";
+        projects.forEach(project => {
+                // Check if links are valid (not empty and not just "#")
+                const hasViewLink = project.links.view && project.links.view !== '#' && project.links.view.trim() !== '';
+                const hasCodeLink = project.links.code && project.links.code !== '#' && project.links.code.trim() !== '';
+                
+                // Build button HTML only for valid links
+                let buttonsHTML = '<div class="btns">';
+                if (hasViewLink) {
+                        buttonsHTML += `<a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>`;
+                }
+                if (hasCodeLink) {
+                        buttonsHTML += `<a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>`;
+                }
+                buttonsHTML += '</div>';
+                
+                projectsHTML += `
+                <div class="grid-item ${project.category}">
+                    <div class="box tilt">
+                        <img draggable="false" src="./static/images/projects/${project.image}.png" alt="project" />
+                        <div class="content">
+                            <div class="tag">
+                                <h3>${project.name}</h3>
+                            </div>
+                            <div class="desc">
+                                <p>${project.desc}</p>
+                                ${buttonsHTML}
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+        });
+        projectsContainer.innerHTML = projectsHTML;
 
-    // vanilla tilt.js
-    // VanillaTilt.init(document.querySelectorAll(".tilt"), {
-    //     max: 20,
-    // });
-    // // vanilla tilt.js  
+        // Wait for images to load before initializing Isotope/tilt to avoid layout glitches
+        const imgs = projectsContainer.querySelectorAll('img');
+        let imagesToLoad = imgs.length;
 
-    // /* ===== SCROLL REVEAL ANIMATION ===== */
-    // const srtop = ScrollReveal({
-    //     origin: 'bottom',
-    //     distance: '80px',
-    //     duration: 1000,
-    //     reset: true
-    // });
+        function finalizeLayout() {
+                // Initialize VanillaTilt for hover effect
+                if (typeof VanillaTilt !== 'undefined') {
+                        VanillaTilt.init(document.querySelectorAll('.tilt'), { max: 12 });
+                }
 
-    // /* SCROLL PROJECTS */
-    // srtop.reveal('.work .box', { interval: 200 });
-
-    // isotope filter products
-    var $grid = $('.box-container').isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows',
-        masonry: {
-            columnWidth: 200
+                // Use pure CSS Grid instead of Isotope for layout
+                // Only use Isotope for filtering functionality
+                var $grid = $('.box-container');
+                
+                // Store all items
+                var $items = $grid.find('.grid-item');
+                
+                // filter items on button click
+                $('.button-group').on('click', 'button', function () {
+                        $('.button-group').find('.is-checked').removeClass('is-checked');
+                        $(this).addClass('is-checked');
+                        var filterValue = $(this).attr('data-filter');
+                        
+                        if (filterValue === '*') {
+                                // Show all items
+                                $items.show();
+                        } else {
+                                // Hide all, then show filtered
+                                $items.hide();
+                                $items.filter(filterValue).show();
+                        }
+                });
         }
-    });
 
-    // filter items on button click
-    $('.button-group').on('click', 'button', function () {
-        $('.button-group').find('.is-checked').removeClass('is-checked');
-        $(this).addClass('is-checked');
-        var filterValue = $(this).attr('data-filter');
-        $grid.isotope({ filter: filterValue });
-    });
+        if (imagesToLoad === 0) {
+                finalizeLayout();
+        } else {
+                imgs.forEach(img => {
+                        if (img.complete) {
+                                imagesToLoad--;
+                        } else {
+                                img.addEventListener('load', () => {
+                                        imagesToLoad--;
+                                        if (imagesToLoad === 0) finalizeLayout();
+                                });
+                                img.addEventListener('error', () => {
+                                        // treat errored image as loaded to avoid blocking
+                                        imagesToLoad--;
+                                        if (imagesToLoad === 0) finalizeLayout();
+                                });
+                        }
+                });
+                // In case all images were already cached/complete
+                if (imagesToLoad === 0) finalizeLayout();
+        }
 }
 
 getProjects().then(data => {
     showProjects(data);
 })
 // fetch projects end
-
-// Start of Tawk.to Live Chat
-var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-(function () {
-    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/60df10bf7f4b000ac03ab6a8/1f9jlirg6';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
-})();
-// End of Tawk.to Live Chat
 
 // diUchitkar developer mode
 document.onkeydown = function (e) {

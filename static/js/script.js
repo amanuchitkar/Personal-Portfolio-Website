@@ -81,12 +81,17 @@ var typed = new Typed(".typing-text", {
 
 async function fetchData(type = "skills") {
     let response
-    type === "skills" ?
-        response = await fetch("static/js/skills.json")
-        :
-        response = await fetch("static/js/projects.json")
-    const data = await response.json();
-    return data;
+    try {
+        type === "skills" ?
+            response = await fetch("static/js/skills.json")
+            :
+            response = await fetch("static/js/projects.json")
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(`Error fetching ${type}:`, error);
+        return [];
+    }
 }
 
 function showSkills(skills) {
@@ -107,10 +112,11 @@ function showSkills(skills) {
 function showProjects(projects) {
     let projectsContainer = document.querySelector("#work .box-container");
     let projectHTML = "";
-    projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
+    // Filter out android projects and limit to 6 projects for the home page
+    projects.filter(project => project.category != "android").slice(0, 6).forEach(project => {
         projectHTML += `
-        <div class="box tilt">
-      <img draggable="false" src="/static/images/projects/${project.image}.png" alt="project" />
+        <div class="box tilt" onclick="window.location.href='/project'" style="cursor: pointer;">
+      <img draggable="false" src="./static/images/projects/${project.image}.png" alt="${project.name}" />
       <div class="content">
         <div class="tag">
         <h3>${project.name}</h3>
@@ -118,8 +124,7 @@ function showProjects(projects) {
         <div class="desc">
           <p>${project.desc}</p>
           <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
+            <a href="${project.links.view}" class="btn" target="_blank" onclick="event.stopPropagation();"><i class="fas fa-eye"></i> View</a>
           </div>
         </div>
       </div>
@@ -189,18 +194,6 @@ document.onkeydown = function (e) {
         return false;
     }
 }
-
-// Start of Tawk.to Live Chat
-var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-(function () {
-    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/60df10bf7f4b000ac03ab6a8/1f9jlirg6';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
-})();
-// End of Tawk.to Live Chat
 
 
 /* ===== SCROLL REVEAL ANIMATION ===== */

@@ -1,5 +1,45 @@
 [
   {
+    "name": "Mentor Sarthi",
+    "desc": "Mentor Sarthi is a comprehensive career guidance platform empowering students and professionals since 2023. The platform connects mentees with experienced mentors to guide career journeys, providing personalized mentorship, career counseling, and professional development resources. Built with modern web technologies to deliver an intuitive and engaging user experience.",
+    "image": "mentorsarthi",
+    "category": "mern",
+    "links": {
+      "view": "https://www.mentorsarthi.com/",
+      "code": "#"
+    }
+  },
+  {
+    "name": "DFIIE - DBATU",
+    "desc": "DFIIE (Dr. Babasaheb Ambedkar Technological University Innovation and Incubation Ecosystem Centre) is an innovation hub fostering entrepreneurship and startup culture. The platform serves as a catalyst for innovation, providing resources, mentorship, and infrastructure to budding entrepreneurs and startups. Features a modern, responsive design showcasing the center's initiatives and programs.",
+    "image": "dfiie",
+    "category": "mern",
+    "links": {
+      "view": "https://dbatuiiec.com/",
+      "code": "#"
+    }
+  },
+  {
+    "name": "KCIIL",
+    "desc": "KCIIL (KBCNMU Centre for Innovation, Incubation and Linkages) is an innovation hub at KBCNMU, Jalgaon, dedicated to fostering innovation and supporting startups. With 94+ startups across 6 cohorts and 385 jobs created, KCIIL provides comprehensive support for entrepreneurial ventures. The platform showcases the center's impact in building the future of innovation and entrepreneurship.",
+    "image": "kciil",
+    "category": "mern",
+    "links": {
+      "view": "https://kciil-kbcnmu.in",
+      "code": "#"
+    }
+  },
+  {
+    "name": "Dr. Fasal",
+    "desc": "Dr. Fasal is an advanced AI-powered plant disease detection system that revolutionizes agriculture through machine learning. The platform uses deep learning algorithms to analyze plant leaf images and detect diseases early, helping farmers prevent crop loss. Features real-time weather monitoring for plant growth, including temperature, humidity, and rainfall tracking, along with expert recommendations for disease prevention and management.",
+    "image": "drfasal",
+    "category": "lamp",
+    "links": {
+      "view": "https://dr.fasal.enorviaglobal.com/index",
+      "code": "#"
+    }
+  },
+  {
     "name": "Leaderboard Website",
     "desc": "The Leaderboard Website is a responsive application that transforms CSV data into an interactive, real-time leaderboard. Ideal for gaming and educational contexts, it features a modern design, custom scrollbars, and ensures a seamless experience across devices. Built with HTML5, CSS3, and JavaScript, it offers an efficient and engaging way to display rankings.",
     "image": "lead",
