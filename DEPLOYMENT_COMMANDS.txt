@@ -1,0 +1,295 @@
+================================================================================
+PORTFOLIO WEBSITE - DEPLOYMENT COMMANDS REFERENCE
+Domain: amanuchitkar.enorviaglobal.com & www.amanuchitkar.enorviaglobal.com
+Date: October 20, 2025
+================================================================================
+
+========================================
+1. GUNICORN SERVICE MANAGEMENT
+========================================
+
+# Start Gunicorn service
+sudo systemctl start portfolio.service
+
+# Stop Gunicorn service
+sudo systemctl stop portfolio.service
+
+# Restart Gunicorn service (use after code changes)
+sudo systemctl restart portfolio.service
+
+# Reload Gunicorn service (graceful restart)
+sudo systemctl reload portfolio.service
+
+# Check Gunicorn service status
+sudo systemctl status portfolio.service
+
+# View Gunicorn service logs
+sudo journalctl -u portfolio.service -f
+
+# View last 50 lines of Gunicorn logs
+sudo journalctl -u portfolio.service -n 50 --no-pager
+
+# Enable Gunicorn service to start on boot
+sudo systemctl enable portfolio.service
+
+# Disable Gunicorn service from starting on boot
+sudo systemctl disable portfolio.service
+
+
+========================================
+2. NGINX SERVICE MANAGEMENT
+========================================
+
+# Test Nginx configuration (always run before reload/restart)
+sudo nginx -t
+
+# Reload Nginx (use after config changes, no downtime)
+sudo systemctl reload nginx
+
+# Restart Nginx
+sudo systemctl restart nginx
+
+# Check Nginx status
+sudo systemctl status nginx
+
+# Start Nginx
+sudo systemctl start nginx
+
+# Stop Nginx
+sudo systemctl stop nginx
+
+# View Nginx error logs
+sudo tail -f /var/log/nginx/error.log
+
+# View Portfolio-specific Nginx logs
+sudo tail -f /var/log/nginx/portfolio_access.log
+sudo tail -f /var/log/nginx/portfolio_error.log
+
+
+========================================
+3. DJANGO APPLICATION MANAGEMENT
+========================================
+
+# Navigate to project directory
+cd /home/kciil/Personal-Portfolio-Website
+
+# Activate virtual environment
+source myenv/bin/activate
+
+# Collect static files (run after static file changes)
+python manage.py collectstatic --noinput
+
+# Run migrations (run after model changes)
+python manage.py migrate
+
+# Create migrations (after model changes)
+python manage.py makemigrations
+
+# Create superuser for admin panel
+python manage.py createsuperuser
+
+# Check for issues
+python manage.py check
+
+# Access Django shell
+python manage.py shell
+
+
+========================================
+4. COMPLETE RELOAD SEQUENCE (AFTER CODE CHANGES)
+========================================
+
+# Full deployment reload after code changes:
+cd /home/kciil/Personal-Portfolio-Website
+source myenv/bin/activate
+git pull origin main                           # If pulling from repository
+python manage.py collectstatic --noinput      # If static files changed
+python manage.py migrate                       # If models changed
+sudo systemctl restart portfolio.service       # Restart Gunicorn
+sudo systemctl reload nginx                    # Reload Nginx
+
+
+========================================
+5. TROUBLESHOOTING COMMANDS
+========================================
+
+# Check if socket file exists
+ls -l /run/portfolio.sock
+
+# Check socket permissions
+sudo chmod 666 /run/portfolio.sock
+
+# View all systemd services related to portfolio
+systemctl list-units | grep portfolio
+
+# Reload systemd daemon (after service file changes)
+sudo systemctl daemon-reload
+
+# Check which process is using port 80/443
+sudo netstat -tulpn | grep -E ':(80|443)'
+
+# Check portfolio socket connections
+sudo systemctl status portfolio.socket
+
+# Restart both socket and service
+sudo systemctl restart portfolio.socket
+sudo systemctl restart portfolio.service
+
+# View recent system logs
+sudo journalctl -xe
+
+# Check Django application directly via Gunicorn
+curl -I http://unix:/run/portfolio.sock/
+
+# Test local connection
+curl -I http://localhost -H "Host: amanuchitkar.enorviaglobal.com"
+
+# Test HTTPS
+curl -I https://amanuchitkar.enorviaglobal.com
+
+
+========================================
+6. SSL CERTIFICATE MANAGEMENT
+========================================
+
+# Renew SSL certificate manually
+sudo certbot renew
+
+# Renew SSL certificate for specific domain
+sudo certbot renew --cert-name amanuchitkar.enorviaglobal.com
+
+# Test certificate renewal (dry run)
+sudo certbot renew --dry-run
+
+# List all certificates
+sudo certbot certificates
+
+# View certificate information
+sudo openssl x509 -in /etc/letsencrypt/live/amanuchitkar.enorviaglobal.com/fullchain.pem -text -noout
+
+
+========================================
+7. MONITORING AND LOGS
+========================================
+
+# Monitor all portfolio-related logs in real-time
+sudo tail -f /var/log/nginx/portfolio_access.log /var/log/nginx/portfolio_error.log
+
+# Check disk space
+df -h
+
+# Check memory usage
+free -h
+
+# Check system resources
+htop  # or top
+
+# View portfolio service resource usage
+systemctl status portfolio.service --no-pager
+
+# Check recent login attempts
+sudo journalctl -u ssh -n 100 --no-pager
+
+
+========================================
+8. BACKUP COMMANDS
+========================================
+
+# Backup database
+cp /home/kciil/Personal-Portfolio-Website/db.sqlite3 /home/kciil/backups/db.sqlite3.$(date +%Y%m%d_%H%M%S)
+
+# Backup entire project (excluding virtual environment)
+tar -czf /home/kciil/backups/portfolio_backup_$(date +%Y%m%d_%H%M%S).tar.gz \
+    --exclude='myenv' \
+    --exclude='__pycache__' \
+    --exclude='*.pyc' \
+    /home/kciil/Personal-Portfolio-Website
+
+
+========================================
+9. SECURITY UPDATES
+========================================
+
+# Update all packages in virtual environment
+cd /home/kciil/Personal-Portfolio-Website
+source myenv/bin/activate
+pip list --outdated
+pip install --upgrade pip
+pip install -r requirements.txt --upgrade
+
+# Update system packages
+sudo apt update
+sudo apt upgrade
+
+# Update only Nginx
+sudo apt update && sudo apt install --only-upgrade nginx
+
+
+========================================
+10. QUICK REFERENCE - MOST USED COMMANDS
+========================================
+
+# After making code changes:
+sudo systemctl restart portfolio.service
+
+# After updating static files:
+cd /home/kciil/Personal-Portfolio-Website && source myenv/bin/activate && python manage.py collectstatic --noinput
+sudo systemctl reload nginx
+
+# After changing Nginx config:
+sudo nginx -t
+sudo systemctl reload nginx
+
+# Check if everything is running:
+sudo systemctl status portfolio.service nginx
+
+# View live logs:
+sudo journalctl -u portfolio.service -f
+
+
+========================================
+IMPORTANT FILE LOCATIONS
+========================================
+
+Project Directory:          /home/kciil/Personal-Portfolio-Website
+Virtual Environment:        /home/kciil/Personal-Portfolio-Website/myenv
+Django Settings:            /home/kciil/Personal-Portfolio-Website/Portfolio/settings.py
+Static Files:               /home/kciil/Personal-Portfolio-Website/staticfiles/
+Database:                   /home/kciil/Personal-Portfolio-Website/db.sqlite3
+
+Gunicorn Service:           /etc/systemd/system/portfolio.service
+Gunicorn Socket:            /etc/systemd/system/portfolio.socket
+Gunicorn Socket File:       /run/portfolio.sock
+
+Nginx Config:               /etc/nginx/sites-available/portfolio
+Nginx Enabled Site:         /etc/nginx/sites-enabled/portfolio
+Nginx Access Log:           /var/log/nginx/portfolio_access.log
+Nginx Error Log:            /var/log/nginx/portfolio_error.log
+
+SSL Certificate:            /etc/letsencrypt/live/amanuchitkar.enorviaglobal.com/fullchain.pem
+SSL Private Key:            /etc/letsencrypt/live/amanuchitkar.enorviaglobal.com/privkey.pem
+
+
+========================================
+ENVIRONMENT VARIABLES (in service file)
+========================================
+
+DJANGO_SECRET_KEY:          Set in /etc/systemd/system/portfolio.service
+DJANGO_DEBUG:               Set to False in production
+PATH:                       Points to virtual environment
+
+
+========================================
+USEFUL ALIASES (Add to ~/.bashrc)
+========================================
+
+alias portfolio-restart='sudo systemctl restart portfolio.service'
+alias portfolio-status='sudo systemctl status portfolio.service'
+alias portfolio-logs='sudo journalctl -u portfolio.service -f'
+alias portfolio-nginx-reload='sudo nginx -t && sudo systemctl reload nginx'
+alias portfolio-cd='cd /home/kciil/Personal-Portfolio-Website && source myenv/bin/activate'
+
+
+================================================================================
+END OF DEPLOYMENT COMMANDS REFERENCE
+================================================================================

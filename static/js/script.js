@@ -83,9 +83,9 @@ async function fetchData(type = "skills") {
     let response
     try {
         type === "skills" ?
-            response = await fetch("static/js/skills.json")
+            response = await fetch("/static/js/skills.json")
             :
-            response = await fetch("static/js/projects.json")
+            response = await fetch("/static/js/projects.json")
         const data = await response.json();
         return data;
     } catch (error) {

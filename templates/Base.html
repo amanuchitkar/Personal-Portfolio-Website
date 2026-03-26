@@ -4,8 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="aman uchitkar, portfolio, aman, full stack dev, personal portfolio lifecodes, portfolio design, portfolio website, personal portfolio" />
-    <meta name="description" content="Welcome to aman's Portfolio. Full-Stack Web Developer and Android App Developer" />
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{% block canonical_url %}https://www.amanuchitkar.in{% endblock %}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{% block og_url %}https://www.amanuchitkar.in{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Aman Uchitkar - Portfolio{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Director at Enorvia Global, Founder & CTO of MentorSarthi. Full-Stack Developer, Ethical Hacker, and Innovator.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}https://www.amanuchitkar.in/static/images/hero.jpeg{% endblock %}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{% block twitter_url %}https://www.amanuchitkar.in{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}Aman Uchitkar - Portfolio{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Director at Enorvia Global, Founder & CTO of MentorSarthi. Full-Stack Developer, Ethical Hacker, and Innovator.{% endblock %}">
+        <meta property="twitter:image" content="{% block twitter_image %}https://www.amanuchitkar.in/static/images/hero.jpeg{% endblock %}">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Aman Uchitkar",
+      "jobTitle": "Director, Founder & CTO",
+      "worksFor": [
+        {
+          "@type": "Organization",
+          "name": "Enorvia Global Private Limited"
+        },
+        {
+          "@type": "Organization",
+          "name": "MentorSarthi"
+        }
+      ],
+      "url": "https://www.amanuchitkar.in",
+      "sameAs": [
+        "https://www.linkedin.com/in/aman-uchitkar-44757020a/",
+        "https://github.com/amanuchitkar",
+        "https://x.com/AmanUchitkar"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "India"
+      },
+      "email": "amanuchitkar@gmail.com",
+      "telephone": "+91 7058376553"
+    }
+    </script>
+    
+    <!-- Custom CSS -->
+    <meta name="keywords" content="{% block meta_keywords %}aman uchitkar, mentorsarthi, enorvia global, dfiie, kciil, portfolio, full stack developer, web developer, android developer, director, founder, cto, ethical hacker, cybersecurity{% endblock %}" />
+    <meta name="description" content="{% block meta_description %}Aman Uchitkar - Director at Enorvia Global, Founder & CTO of MentorSarthi. Full-Stack Developer, Ethical Hacker, and Innovator. Explore my portfolio showcasing projects in web development, cybersecurity, and entrepreneurship.{% endblock %}" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static\css\style.css">
     <link rel="stylesheet" href="../static/css/main.css">
@@ -67,7 +117,7 @@
   <div class="container">
     <div class="content">
       <div class="image-box">
-        <img draggable="false" src="./static/images/contact1.png" alt="">
+        <img draggable="false" src="./static/images/contact1.png" alt="Contact Aman Uchitkar">
       </div>
     <form id="contact-form" method="post" action="/contact">
       {% csrf_token %}
